@@ -1,0 +1,171 @@
+-----------------------------------------------------------------------------------
+VLSI CLASSES: Lab 1 - Setting up UNIX environment for Cadence 6.1.7 and Synopsys 2017
+-----------------------------------------------------------------------------------
+
+------------------------------------------------------------------
+Note: These instructions will setup your environment for use with:
+      Cadence 6.1.7 and Synopsys 2017 with AMI .5 CMOS technology
+------------------------------------------------------------------
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+THESE INSTRUCTIONS ASSUME THAT YOUR ACCOUNT WAS PREVIOUSLY SETUP IN
+ECE126 IN FALL 2009.  IF YOU DID NOT TAKE ECE126/F09, GO TO
+https://cpb-us-e1.wpmucdn.com/blogs.gwu.edu/dist/7/717/files/2017/09/Lab1_2-zx5f92.pdf
+AND COMPLETE THE STEPS LISTED THERE BEFORE CONTINUING.  FAILURE TO DO
+SO MAY RESULT IN AN IMPROPER ENVIRONMENT SETUP.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+1. Make sure you have an active SEAS account. 
+   If you do, go ahead and login into a SUN workstation in room 405
+   If you do not have a SEAS account, please go to Room 401 to activate your SEAS account.
+
+2. Open a terminal window. Right click anywhere on the desktop, choose 
+   Tools-->Terminal
+
+3. Make a new directory for all your ece128 files.
+   mkdir ece128
+
+4. Go into that directory. ALWAYS enter this directory before doing any work for this class
+   cd ece128
+  
+5. You now have to edit your .profile. Open the file by typing what is below in the terminal window.
+   cd ~
+   gedit .profile <Enter>   
+
+   (you do no have to use gedit, you can use any TEXT editor you are comfortable with, for example:
+        vi .profile, emacs .profile, pico .profile)
+
+6. Edit your .profile as follows:
+
+6.1. Change this line
+
+[[ `hostname` != hobbes ]] && . /apps/cadence/startup_scripts/virtuoso.env
+
+To the following
+
+[[ `hostname` != hobbes ]] && . /home/seas/vlsi/course_ece128/vlsi_2018.cadence61.env.sh.S10
+
+6.2 Add the following to the end of your profile
+
+#
+# ece128 tool scripts
+# 
+export PATH=$PATH:/home/seas/vlsi/course_ece128/scripts
+
+
+(REMOVE any other lines in your profile that setup Cadnece or synopsys tools, IF they
+ were NOT setup in ECE126/F09 or ECE128/S10.  They will likely interfere with the setup
+ above. Check with your TA if you have any questions.	)
+
+7. Save the .profile and quit the editor
+
+8. Activate this new .profile by loggin out of the workstation and logging back in
+
+9. Log back into the workstation, 
+   create a directory to store your cadence work in, open a terminal and type:
+
+   cd ~
+   mkdir cadence	(you will always work in the cadence directory)
+
+10. To add support for "AMI .5" CMOS technology type the following:
+
+   cp /apps/design_kits/ncsu-cdk-1.6.0.beta/.cdsinit ~/cadence
+   cp /apps/design_kits/ncsu-cdk-1.6.0.beta/.cdsenv ~
+
+
+==================================
+STARTING CADENCE TOOLS
+==================================
+
+11. From now on, to start cadence, you will only need to login to the workstation
+    and type:
+
+   cd cadence
+   virtuoso &
+
+12. If you wish to use ncverilog, or simvision, simply type:
+
+   cd cadence
+   ncverilog  
+   or
+   simvision &
+  
+==================================
+STARTING SYNOPSYS TOOLS
+==================================
+
+13. For the Spring 2010 semester, Synopsys tools will only work on HOBBES, 
+   however Cadence tools will work on the local workstations. 
+   When Synopsys tools are required, you may access hobbes by typing the following command:
+
+   ssh -X hobbes
+   (accept any warnings, provide your SEAS password)
+
+14. To start Design Vision type:
+
+   cd cadence
+   design_vision
+
+   or for other Synopsys tools:
+
+   cd cadence
+   dc_shell
+   formality
+   fm_shellf
+   primetime -64bit
+   
+=================================
+SOMETHING IS WRONG, NOTHING WORKS
+=================================
+
+15. To test and verify your enivonment is working properly type the following commands in a terminal
+    (after you have logged back in)
+
+   On the local workstation:
+
+   --------------   
+   CHECK CADENCE:
+   type:  
+   virtuoso -version
+
+   it should return (version 6.1.7 or HIGHER, not lower)
+   @(#)$CDS: virtuoso version 6.1.7-64b 01/24/2018 13:57 (sjfhw315) $
+    
+   --------------   
+   CHECK VERILOG-XL:
+   type:  
+   verilog -version
+
+   it should return (version 08.20.001-d or HIGHER, not lower)
+   Tool:   VERILOG-XL      08.20.001-d
+
+   --------------   
+   CHECK VERILOG-NC:
+   type: 
+   ncverilog -version
+
+   it should return (version 15.20-s045 or HIGHER, not lower)
+   TOOL:	ncverilog	15.20-s045 
+
+   --------------   
+   CHECK SIMVISION:
+   type:  
+   simvision -version
+
+   it should return (version 15.20-s045 or HIGHER, not lower)
+   TOOL:	simvision(64)	15.20-s045
+
+   --------------   
+   CHECK SYNOPSYS's Design Compiler Tool
+   type:  
+   dc_shell -version
+
+   it should return (version  N-2017.09-SP3 or HIGHER, not lower)
+   dc_shell version    -  N-2017.09-SP3
+
+
+16. If any of the tools returned a lower version double check the .profile settings above.
+    If the tools don't work at all, make sure you have "logged out" of the workstation
+    and then back into the workstation if you just edited your .profile
+
+    Afterwards double check your settings with the GTA if you are still having problems.

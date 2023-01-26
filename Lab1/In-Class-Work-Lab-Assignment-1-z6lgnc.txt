@@ -1,0 +1,272 @@
+############################################################
+############################################################
+
+George Washington University
+School of Engineering and Applied Science
+Electrical and Computer Enginering Department
+
+ECE 128
+Lab 1
+
+Introduction to Verilog and Simvision
+
+Original Author: Thomas Farmer (tfarmer@gwu.edu)
+Updated, Spring 2010: William Gibb (wgibb@gwu.edu)
+Updated, Spring 2011: Thomas Farmer 
+
+############################################################
+############################################################
+
+Verilog is a Hardware Description Language which can be used to describe systems that can be synthesized into FPGAs or ASICs. 
+In this class you will utilize verilog to synthesize code into ASICs. 
+
+You have 1 week to complete the lab. Hand in all .v, tb.v and waveform plots. Unless stated, test for all possible combinations of inputs.
+
+Here is a brief ASIC design flow :
+----------------------------------
+Specification
+     |
+RTL Coding and Simulation
+     |
+Logic Synthesis
+     |
+Optimization 
+     |
+Gate Level Simulation
+     |
+Static Timing Analysis
+     |
+Place and Route
+     |
+Static Timing Analysis
+     |
+Preliminary Netlist Handoff
+
+In this lab, the functionality of a 2:1 "MUX" is your specification.  
+You will do the RTL Coding and Simulation for a 2:1 MUX today.
+Logic Synthesis (and the later steps) will be done using synopsys Design Compiler in a future lab.
+
+############################################################
+############################################################
+### Lab Steps:
+############################################################
+############################################################
+
+0. While it will be discussed fully by the GTA how the code you are typing works today,
+If you are very new to Verilog, the following document will help you to understand
+its basic structure and operation:
+http://www.seas.gwu.edu/~vlsi/ece128/SPRING/labs_tutorials/lab1_intro_to_verilog.pdf
+
+
+1. There are three major styles one can write verilog code in:
+   i)   Structural - describes primitive components, such as gates and flip flops.
+   ii)  Behavioral - describes the function of each block, uses assign and  logical expressions.
+   iii) Procedural - uses sensitivity list in always and initial blocks.
+
+2. Thefirst two styles are always synthesizeable and recommended. However, complex gates require 
+coding in the third style so be careful that your code is synthesizeable when using this style. 
+
+Procedural is typically a mix of structure and behavioral coding styles.  Typically initial and always
+blocks are encountered in this style.  Verilog code written in this style is not always synthesizable.
+You will often use this style when creating test benches for your verilog code.
+
+
+
+3. In this lab, we will first create a MUX in verilog
+
+4. If you do not have a directory for ECE128 in your account yet, create a directory to place your coursework.  
+It is recommended that you place your ECE128 directory in your home directory.  
+To do this, type the following command:
+
+mkdir ~/ece128
+
+You can keep all of your labs, homework, and project directories in this folder.  Go into your ECE128 directory:
+
+cd ~/ece128
+
+You will want to create a directory for each project you do.  You should now make a folder to keep the files for this lab exercis:
+
+mkdir lab1
+
+Go into your lab directory:
+
+cd lab1
+
+5a. Using your favorite editor, create the following file and call it:
+
+//------------------
+//filename: mux_b.v
+//------------------
+
+module mux (c,a,b,s);
+input a,b,s;
+output c;
+
+assign c=(s)?a:b; // This is a behavioral style
+
+endmodule
+
+5b. Using your favorite editor, create the structural version of a MUX, called:
+
+//------------------
+//filename: mux_s.v
+//------------------
+
+module mux (c,a,b,s);
+input a,b,s;
+output c;
+
+not I1 (wire1, s);
+and I2 (wire2, a, wire1);
+and I3 (wire3, b, wire1);
+
+or I4 (c, wire2, wire3);
+
+endmodule
+
+
+
+
+6.  Create this file which will serve as a test bench for the mux.v file above:
+
+//------------------
+//filename: mux_tb.v
+//------------------
+
+module mux_tb();
+wire c;
+reg a,b,s;
+
+mux m1(.c(c), .a(a), .b(b), .s(s)); 
+// mux m1 is instantiated with a named port style.
+// This should become your common convention for instantiating modules
+// in ECE128.
+
+initial
+ begin
+  #0 a=1'b0;
+     b=1'b0;
+     s=1'b0;
+  #5 a=1'b1;
+  #5 s=1'b1;
+  #5 $finish; // The $finish call ends simulation.
+ end
+
+initial
+ begin
+	// Open a db file for saving simulation data
+  $shm_open ("mux_tb.db");
+	// Collect all signals (hierarchically) from the module "mux_tb"
+  $shm_probe (mux_tb,"AS");
+ end
+endmodule
+
+7. To check your Verilog code for syntax errors, you can use a script called 'sim-nc'.
+To check your code, type :
+
+sim-nc mux_b.v
+
+You should see no errors.  If you see errors go back and fix them.
+Note: mux_b.v cannot run by itself, it needs a test bench, we will now run it with the test bench:
+
+7. To execute both verilog and stimulus files type :
+sim-nc mux_b.v mux_tb.v
+
+8.Open simvision by typing 'simvision &' at the terminal. 
+Look for the mux_tb folder and open the .trn file. 
+Check your waveforms.  Make sure they are correct for a multiplexer.
+
+9. Now check the structural version:
+sim-nc mux_s.v mux_tb.v
+
+10. Open simvision, see if the waveforms are the same as for the behavioral version of your code
+    Show your GTA and move on to the in class assignment #1 (see below)
+
+
+
+
+
+############################################################
+############################################################
+### In Class Assignment 1
+############################################################
+############################################################
+
+1.Create a half adder using an and and xor gate. Test the circuit. Create a full adder by wiring two half adders 
+together using pin-to-pin mapping.
+
+2.Design a twobit Full Adder (consisting of 2 full adder cascaded together). Test the circuit using all possible 
+combinations of inputs in the testbench.
+
+Helpful hint 1: You can reload a new waveform in simvision by closing the database and reloading the new database.
+Helpful hint 2: To repeat a command in kshell, simply press <esc> k, keep pressing k and you will scroll up your previously typed commands
+Eg.
+press <esc> k
+you will see your last typed command:  (something like:)
+   sim-nc fulladder.v halfadder.v fulladder_tb.v
+
+press k again, and you will see the command you typed prior to the one above, and so on and so on...
+
+############################################################
+############################################################
+### Notes on the sim-nc scripts
+############################################################
+############################################################
+The script sim-nc calls the verilog compilation and simulation environment, 
+NCVerilog (ncverilog).  NCVerilog is a Cadence Verilog simulator.  It is considered 
+a fabrication sign-off simulator by many IC foundries.  It is improved over Verilog-XL 
+with support for Verilog-2001 language constructs.
+
+The sim-nc script passes all of its arguments to NCVerilog.  In this lab, we 
+typed the file names into the simulator to run it.  This can become burdensome 
+if the number of files in your design and testbench grows beyond a couple of 
+files.  To our benefit, we can read in a list of files from to NCVerilog, so 
+that we don't have to keep typing in filenames.
+
+###################################################
+### Steps to recreate the labwork with a file list:
+###################################################
+1) In your source directory, create a new file, call it files.v.  Fill it with the
+ following content.  Do not include the comments.
+
+//------------------
+//filename: files.v
+//------------------
+
+mux_b.v
+mux_tb.v
+
+2) Run sim-nc with the following format - "sim-nc -f <file_list>".  If your 
+following this lab, you command should look like this:
+
+sim_nc -f files.v
+
+3) This will cause the simulator to read in the source files from files.v, instead 
+of having to type in each filename on the command line.  It is only necessary to add 
+the filenames to files.v.  When simulating a project with a large number of files, 
+you should use this format for driving simulation.
+
+##################################################
+### Steps to run NCVerilog directly with SimVision
+##################################################
+
+There is a second version of the sim-nc script, called 'sim-ncg'.  This calls NCVerilog
+ with the GUI option, which launches the simulation in the waveform viewer, SimVision.  
+Here, you can use the simvision interface to add signals you wish you see displayed 
+to the waveform, and then run the simulation.  sim-ncg accepts the same form of 
+arguments that sim-nc does.
+
+######################
+### Notes on NCVerilog
+######################
+
+NCVerilog is a compiled verilog simulator.  The software compiles the verilog simulation
+ environment into a C program, which is then compiled and run, in order to perform the
+ simulation. When it is run, sim-nc creates two temporary items.  The first item is a
+ simulation log, this it located at ./nc.log, and contains the output of the simulation 
+session.  The second item that NCVerilog creates is an directory ./INCA_libs.  This is 
+the temporary directory where the compiled simulation is stored.  It does not need to 
+be accessed in the normal course of using NCVerilog.
+
+
+
