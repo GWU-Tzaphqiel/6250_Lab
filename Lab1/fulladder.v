@@ -1,5 +1,5 @@
 
-module fulladder(s, cout, a, b, cin); 
+module fulladder(a, b, cin, s, cout); 
 input a, b, cin; 
 output s, cout; 
 wire half_sum_1, half_carry_1, half_carry_2; 
@@ -119,10 +119,16 @@ reg [1:0] s;
 
 //internal sequential logic variables
 //Stage 0 In
+//wire w_a0_s0;
+//wire w_b0_s0;
+//wire w_cin_s0;
 reg [1:0]a_s0;
 reg [1:0]b_s0;
 reg cin_s0;
 //Stage 1 In
+//wire w_a1_s1;
+//wire w_b1_s1;
+//wire w_fa0c_s1;
 reg a1_s1;
 reg b1_s1;
 reg s0_s1;
@@ -172,6 +178,13 @@ always @(a or b or cin) begin
 	s[1] <= s1_s1;
 	cout <= cout_s1;
 end
+/*
+assign w_a0_s0 = a[0];
+assign w_b0_s0 = b[0];
+assign w_cin_s0 = cin;
+assign w_a1_a1 = a1_s1;
+assign w_b1_s1 = b1_s1;
+assign w_fa0c_s1 = fa0c_s1;
 
 assign w_s0_s0 = s0_s0;
 assign w_fa0c_s0 = fa0c_s0;

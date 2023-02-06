@@ -13,34 +13,16 @@ fulladder_2b U0(
 .cout(cout),
 .s(s));
 
-initial 
-begin
-a=2'b00;
-b=2'b01;
-cin=1'b1;
-
-#30 
-a=2'b01;
-b=2'b01;
-cin=1'b1;
-
-
-#30
-a=2'b10;
-b=2'b01;
-cin=1'b0;
-
-#30;
-a=2'b00;
-b=2'b01;
-cin=1'b0;
-
-#30;
-a=2'b00;
-b=2'b01;
-cin=1'b0;
-#30;
-$finish;
-
+initial begin
+	a <= 0;
+	b <= 0;
+	cin <= 0;
+	
+	for (i = 0; i < 25; i = i + 1) begin
+		#10 a <= $random;
+			b <= $random;
+				cin <= $random;
+	end
+	$stop;
 end
 endmodule
