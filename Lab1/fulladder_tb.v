@@ -27,4 +27,13 @@ initial begin
 	end
 	$finish;
 end
+
+initial
+ begin
+	// Open a db file for saving simulation data
+  $shm_open ("fulladder_tb.db");
+	// Collect all signals (hierarchically) from the module "adder_tb"
+  $shm_probe (fulladder_tb,"AS");
+ end
+endmodule
 endmodule
