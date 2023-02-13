@@ -26,7 +26,7 @@ end
 initial begin
 	for (i = 0; i < 31; i = i + 1) begin
 	#`DELAY test_vectors = test_vectors+1;
-	#(`DELAY/5)
+	#(`DELAY/5);
 	if({cout, s} == test_vectors[4:3] + test_vectors[2:1] + test_vectors[0]) $display ("PASS");
 	else $display ("FAIL");
 	end

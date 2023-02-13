@@ -1,5 +1,5 @@
 xmverilog(64): 17.10-s001: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	xmverilog	17.10-s001: Started on Feb 13, 2023 at 12:16:41 EST
+TOOL:	xmverilog	17.10-s001: Started on Feb 13, 2023 at 12:34:46 EST
 ncverilog
 	-l
 	nc.log
@@ -140,42 +140,9 @@ xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,12)
 DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
 |
 xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,13): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc04_4M2P' (cds.lib command ignored).
-DEFINE      basic                   $CDK_DIR/lib/basic
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,2): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/basic' (cds.lib command ignored).
-DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,3): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_Analog_Parts' (cds.lib command ignored).
-DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,4): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_Digital_Parts' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,6): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_ami06' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,7): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_ami16' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,8): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_hp06' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,9): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc02' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,10): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc02d' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,11): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc03' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,12): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc03d' (cds.lib command ignored).
-DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
-|
-xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,13): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/NCSU_TechLib_tsmc04_4M2P' (cds.lib command ignored).
 Recompiling... reason: file './fulladder_tb.v' is newer than expected.
-	expected: Mon Feb 13 12:05:55 2023
-	actual:   Mon Feb 13 12:16:30 2023
+	expected: Mon Feb 13 12:16:30 2023
+	actual:   Mon Feb 13 12:34:37 2023
 DEFINE      basic                   $CDK_DIR/lib/basic
 |
 xmverilog: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,2): cds.lib Invalid path '/home/ead/G34397914/cadence/design_kits/ncsu-cdk-1.6.0.beta/lib/basic' (cds.lib command ignored).
@@ -439,9 +406,9 @@ xmsim: *W,DLCPTH (/apps/design_kits/ncsu-cdk-1.6.0.beta/cdssetup/cds.lib,13): cd
 Loading snapshot worklib.fulladder_tb:v .................... Done
 xcelium> source /apps/vlsi_2018/cadence/XCELIUM1710/tools/xcelium/files/xmsimrc
 xcelium> run
------------------------------------------------
-                                          abcin
------------------------------------------------
+------------------------------------------------
+                                           abcin
+------------------------------------------------
 TIME =                    0, test_vectors= 00000, cout=0, s=00
 TIME =                    5, test_vectors= 00001, cout=0, s=01
 PASS
@@ -510,4 +477,4 @@ Time is -                 191
 Simulation complete via $finish(1) at time 191 NS + 0
 ./fulladder_tb.v:37 $finish;
 xcelium> exit
-TOOL:	xmverilog	17.10-s001: Exiting on Feb 13, 2023 at 12:16:43 EST  (total: 00:00:02)
+TOOL:	xmverilog	17.10-s001: Exiting on Feb 13, 2023 at 12:34:47 EST  (total: 00:00:01)
