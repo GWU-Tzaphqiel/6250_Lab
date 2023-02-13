@@ -1,0 +1,8 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(13Feb2023:12:08:48):( ncverilog -l nc.log +access+r fulladder_tb.v )
+s2::(13Feb2023:12:09:34):( ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v )
+s3::(13Feb2023:12:11:17):( ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v )
+s4::(13Feb2023:12:16:41):( ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v )
