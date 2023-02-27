@@ -18,7 +18,7 @@
 
 # list of all HDL files in the design	
 set myFiles [list ./src/fulladder.v ./src/halfadder.v] ;
-set basename fulladder         ;# Top-level module name
+set basename fulladder_2b         ;# Top-level module name
 set myClk clk                    ;# The name of your clock 
 set virtual 1                       ;# 1 if virtual clock, 0 if real clock
 set myPeriod_ns 40               ;# desired clock period (in ns) (sets speed goal)
