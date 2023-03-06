@@ -1,7 +1,7 @@
 (DELAYFILE
 (SDFVERSION "OVI 1.0")
 (DESIGN "fulladder_2b")
-(DATE "Mon Feb 27 12:14:35 2023")
+(DATE "Mon Feb 27 12:37:39 2023")
 (VENDOR "osu05_stdcells")
 (PROGRAM "Synopsys Design Compiler cmos")
 (VERSION "O-2018.06-SP1")

@@ -1,9 +1,9 @@
  
 ****************************************
 Report : design
-Design : fulladder_2b
+Design : ripplecarry4_clk
 Version: O-2018.06-SP1
-Date   : Mon Feb 27 12:37:39 2023
+Date   : Mon Mar  6 11:43:26 2023
 ****************************************
 
 Design allows ideal nets on clock nets.
@@ -67,12 +67,14 @@ Design Parameters:
  
 ****************************************
 Report : hierarchy
-Design : fulladder_2b
+Design : ripplecarry4_clk
 Version: O-2018.06-SP1
-Date   : Mon Feb 27 12:37:39 2023
+Date   : Mon Mar  6 11:43:26 2023
 ****************************************
 
-fulladder_2b
+ripplecarry4_clk
+    AND2X2                  osu05_stdcells
+    DFFPOSX1                osu05_stdcells
     INVX2                   osu05_stdcells
     fulladder_0
         OR2X1               osu05_stdcells
@@ -88,6 +90,22 @@ fulladder_2b
             AND2X2          osu05_stdcells
             XOR2X1          osu05_stdcells
         halfadder_3
+            AND2X2          osu05_stdcells
+            XOR2X1          osu05_stdcells
+    fulladder_2
+        OR2X1               osu05_stdcells
+        halfadder_4
+            AND2X2          osu05_stdcells
+            XOR2X1          osu05_stdcells
+        halfadder_5
+            AND2X2          osu05_stdcells
+            XOR2X1          osu05_stdcells
+    fulladder_3
+        OR2X1               osu05_stdcells
+        halfadder_6
+            AND2X2          osu05_stdcells
+            XOR2X1          osu05_stdcells
+        halfadder_7
             AND2X2          osu05_stdcells
             XOR2X1          osu05_stdcells
 1

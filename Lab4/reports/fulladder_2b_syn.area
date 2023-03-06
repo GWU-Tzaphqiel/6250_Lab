@@ -3,7 +3,7 @@
 Report : area
 Design : fulladder_2b
 Version: O-2018.06-SP1
-Date   : Mon Feb 27 12:14:35 2023
+Date   : Mon Feb 27 12:37:39 2023
 ****************************************
 
 Library(s) Used:
@@ -33,7 +33,7 @@ Total area:                 undefined
 Report : cell
 Design : fulladder_2b
 Version: O-2018.06-SP1
-Date   : Mon Feb 27 12:14:35 2023
+Date   : Mon Feb 27 12:37:39 2023
 ****************************************
 
 Attributes:
