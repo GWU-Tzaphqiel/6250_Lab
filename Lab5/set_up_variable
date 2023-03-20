@@ -1,0 +1,63 @@
+#2....................................................................
+set dft_runname scan ; 
+set scan_library [list osu_scan.db] ; 
+set scancell DFFPOSX1_SCAN ; 
+
+set test_default_delay 0 ; 
+
+set test_default_bidir_delay 0 ; 
+set test_default_strobe 40 ; 
+
+set test_default_period 100 ; 
+
+set test_default_scan_style multiplexed_flip_flop;
+
+
+#3.......................................................................
+
+set filebase [format "%s%s" [format "%s%s" $basename "_"] $dft_runname]
+set target_library [list $target_library $scan_library]
+set_scan_register_type -type {DFFPOSX1_SCAN};
+set_scan_register_type -type ${scancell};
+set_scan_configuration -create_dedicated_scan_out_ports true
+create_test_protocol -infer_async -infer_clock 
+dft_drc -verbose
+compile -scan
+report_constraint -all_violators
+
+#4.......................................................................
+insert_dft
+set_drive 2 test_si
+set_drive 2 test_se
+set_scan_configuration -replace false
+insert_dft
+report_constraint -all_violators
+dft_drc -verbose -coverage_estimate
+report_scan_path -view existing -chain all
+report_cell
+
+#5.......................................................................
+set filename [format "%s%s%s" ./reports/ $filebase ".violators"]
+redirect $filename { report_constraint -all_violators }
+
+set filename [format "%s%s%s" ./reports/ $filebase ".dft_drc"]
+redirect $filename { dft_drc -verbose -coverage_estimate }
+
+set filename [format "%s%s%s" ./reports/ $filebase ".scan_path"] 
+redirect $filename { report_scan_path -view existing -chain all }
+
+set filename [format "%s%s%s" ./reports/ $filebase ".cell"] 
+redirect $filename { report_cell }
+
+set filename [format "%s%s%s" ./src/ $filebase ".spf"]
+write_test_protocol -output $filename
+
+set filename [format "%s%s%s" ./src/ $filebase ".v"]
+redirect change_names { change_names -rules verilog -hierarchy -verbose }
+write -format verilog -hierarchy -output $filename
+
+
+
+
+
+

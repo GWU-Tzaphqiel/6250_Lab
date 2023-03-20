@@ -1,0 +1,4 @@
+s1(06Feb2023:08:10:35):  ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v 
+s2(06Feb2023:08:11:50):  ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v 
+s3(06Feb2023:08:13:07):  ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v 
+s4(06Feb2023:08:13:54):  ncverilog -l nc.log +access+r halfadder.v fulladder.v fulladder_tb.v 

@@ -1,0 +1,10 @@
+//
+// File created by:  xmverilog
+// Do not modify this file
+//
+-l
+nc.log
++access+r
+halfadder.v
+fulladder.v
+fulladder_tb.v

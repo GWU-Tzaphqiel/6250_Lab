@@ -1,3 +1,4 @@
+`include "globals.vh"
 module halfadder (a,b,c,s);
 input a,b;
 output c,s;
